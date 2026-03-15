@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 export default function Counter() {
+    // useState stores and updates component state.
     const [count, setCount] = useState(0);
 
     const handleAdd = () => {

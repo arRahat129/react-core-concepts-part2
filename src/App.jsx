@@ -4,18 +4,21 @@ import Friends from './Friends.jsx';
 import Posts from './Posts.jsx';
 import Players from './Players.jsx';
 import Batsman from './Batsman.jsx';
+import CounterPersonal from './CounterPersonal.jsx';
+import ToogleText from './ToogleText.jsx';
+import UsersTwo from './UsersTwo.jsx';
 import './App.css'
 import { Suspense } from 'react';
 
 const fetchUsers = fetch("https://jsonplaceholder.typicode.com/users")
   .then(res => res.json())
 
-const fetchFriends = async() => {
+const fetchFriends = async () => {
   const res = await fetch("https://jsonplaceholder.typicode.com/users");
   return res.json();
 }
 
-const fetchPosts = async() => {
+const fetchPosts = async () => {
   const res = await fetch("https://jsonplaceholder.typicode.com/posts");
   return res.json();
 }
@@ -41,6 +44,16 @@ function App() {
   return (
     <>
       <h3>Get started</h3>
+
+      <Suspense fallback={<h3>Loading...</h3>}>
+        <CounterPersonal fetchUsers={fetchUsers}></CounterPersonal>
+      </Suspense>
+      <Suspense fallback={<h3>Loading...</h3>}>
+        <ToogleText fetchUsers={fetchUsers}></ToogleText>
+      </Suspense>
+      <Suspense fallback={<h3>Loading...</h3>}>
+        <UsersTwo fetchUsers={fetchUsers}></UsersTwo>
+      </Suspense>
 
       <Players></Players>
 
